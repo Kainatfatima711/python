@@ -1,9 +1,15 @@
-print("Welcome to the World of programming !")
+myage = 5
+myname = "John"
 
-print(4)
 
-print("Hello Python \n")
+print( myage )
+print( myname )
 
-print("Hello", "My age is", 13)
 
-print("welcome to", end ="$")
+codingal = "codingal"
+print(codingal)
+
+myhobby = 'Gaming'
+
+name = input("Enter your name:" )
+print("Hello", name ,"Lets learn coding!! and my hobby is",myhobby)
