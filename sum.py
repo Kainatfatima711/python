@@ -1,10 +1,11 @@
-number = int(input("Enter the whole number: "))
-
+number = int(input("Enter the value of terms: ")) # 3 answer as 6
 sum = 0
+i = 1
 
-#Iterate from 1 to n(inclusive)
-for i in range(1, number + 1):
+while i <= number:
     sum = sum + i
+    i = i + 1
 
-#Print the result
-print("\nsum =", sum)
+    print("\nSum = ", sum )
+
+ 
