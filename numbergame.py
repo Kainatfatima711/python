@@ -1,17 +1,60 @@
 import random
-playing = True
-number = str(random.randint(10,15))
+import time
+number = random.randint(1 , 10)
 
-print("I will generate a number from 01 to 15 , and you have to guess the number one digit at a time.")
+def intro():
+    print("May i ask for your name: ")
 
-while playing:
+    global name
+    name = input()
 
-    guess = input("Give me your best guess! \n")
+    print(name + ", we are going to play a game.I am thinking of a number between 1 and 10")
 
-    if number == guess:
-        print("You win the game")
-        print("The number was", number)
-        break
+    if (number %2==0) :
+    
 
+        x='even'
     else:
-        print("Your guess isn't quite right , try again. \n")
+      x = 'odd'
+
+      print("\n this is an {} number" . format(x))
+      time.sleep(1)
+      print("Go ahead.Guess!")
+
+def pick() :
+   guessesTaken = 0
+
+   while guessesTaken < 6 :
+       time . sleep(.25)
+       enter = input("Guess: ")
+
+       try: 
+   
+         guess =int(enter)
+
+         if guess<=10 and guess>=1:
+       
+            guessesTaken = guessesTaken+1
+            if guessesTaken<6:
+              
+               if guess < number:
+                 print("The guess of the number that you have eneterd is to low")
+               if guess > number:
+                 print("The guess of the number that you have entered is to high")
+
+               if guess!=number:
+                 time.sleep(.5)
+                 print("Try Again!")
+
+               if guess == number:
+                     break 
+              
+         if guess>10 or guess < 1:
+                 
+                 time.sleep(.25)
+                 print("Please Enter a number between 1 and 10")
+
+       except:
+           print("I don't think that" +enter+"is a number.Sorry")
+       
+         
