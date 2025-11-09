@@ -65,3 +65,75 @@ textY = 10
 
 # Game over text
 over_font = pygame.font.Font('freesansbold.ttf , 64')
+
+def show_score(x , y):
+    #Display the current score on the screen.
+    score = font.render("Score: " + str(score_value) , True , (255 , 255 , 255))
+    screen.blit(score , (x , y))
+
+def game_over_text():
+    #Display game over text
+    over_text = over_font.render("GAME OVER" , True , (255 , 255 , 255))
+    screen.blit(over_text , (200 , 250))
+
+def player(x , y):
+    #Draw the player on the screen
+    screen.blit(playerImg , (x , y))
+
+def enemy(x , y , i):
+    #Draw an enemy on the screen
+    screen.blit(enemyImg[i] , (x , y))
+
+def fire_bullet(x , y):
+    #Fire the bullet from the player's position
+    global bullet_state
+    bullet_state = "fire"
+    screen.blit
+    screen.blit(bulletImg ,(x + 16 , y + 10))
+
+def isCollision(enemyX , enemyY , bulletX , bulletY):
+    #Check if there is a collision between the enemy and the bullet
+    distance = math.sqrt((enemyX - bulletX) ** 2 + (enemyY - bulletY) ** 2)
+    return distance < COLLISION_DISTANCE
+
+#Game Loop
+running = True
+
+while running:
+    screen.fill((0 , 0 , 0))
+    screen.blit(background , (0 , 0))
+
+    for event in pygame.event.get():
+
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type  == pygame.KEYDOWN:
+
+            if event.key == pygame.K_LEFT:
+                playerX_change = -5
+
+            if event.key == pygame.K_RIGHT:
+                playerX_change = 5
+            
+            if event.key == pygame.K_SPACE and bullet_state == "ready":
+                bullerX = PlayerX
+                fire_bullet(bullerX , bulletY)
+
+        if event.type == pygame.KEYUP and event.key in[pygame.K_LEFT , pygame.K_RIGHT]:
+            PlayerX = 0
+
+    #Player movement
+    playerX = playerX + playerX_change
+    playerX = max(0 , min(playerX , SCREEN_WIDTH - 64)) #64 is the size of player
+     
+     #Enemy movement
+    for i in range(num_of_enemies):
+        if enemyY[i] > 340:
+            for j in range(num_of_enemies):
+                enemyY[j] = 2000
+                game_over_text()
+                break
+            enemyX[i] = enemyX[i] + enemyX_change[i]
+            if enemyX[i] <=0 or enemyX[i] >= SCREEN_WIDTH - 64:
+                enemyX_change[i] = enemyX_change[i] * -1
+                enemyY[i] = enemyY[i] + enemyY_change[i]
