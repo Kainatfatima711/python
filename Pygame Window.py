@@ -1,19 +1,9 @@
-import pygame
+# Import necssary Libraries
+from tkinter import *
 
-pygame.init()
+#Create Window
+window = Tk
 
-
-screen = pygame.display.set_mode((400 , 500))
-
-done = False
-
-while not done:
-
-    for event in pygame.event.get():
-
-
-        if event.type == pygame.QUIT:
-            pygame.quit()
-
-
-        pygame.display.flip()
+#Set the window title and geometry
+window.title("Demo Window")
+window.geometry("400x300")
